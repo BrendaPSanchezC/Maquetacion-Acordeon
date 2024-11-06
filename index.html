@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+    <script src='https://kit.fontawesome.com/66c3e37d5e.js' crossorigin='anonymous'></script>
+    <title>Acordeon</title>
+</head>
+<body>
+    <section class="contenido ancho">
+        <section class="asked">
+            <h1>Frequently Asked Questions</h1>
+            <div class="card-title">
+                <i class="fa-solid fa-plus icon"></i>
+                <h3>Do you provide any scripts with your templates?</h3>
+            </div>
+            <article class="content">
+                <p>Our templates do not include any additional scripts. Newsletter subscriptions, search fields, forums, image galleries (in HTML versions of Flash products) are inactive. Basic scripts can be easily added at www.zemez.io If you are not sure that the element you’re interested in is active please contact our Support Chat for clarification.</p>
+            </article>
+        
+            <div class="card-title">
+                <i class="fa-solid fa-plus icon"></i>
+                <h3>What do I receive when I order a template?</h3>
+            </div>
+            <article class="content">
+                <p>After you complete the payment via our secure form you will receive the instructions for downloading the product. The source files in the download package can vary based on the type of the product you have purchased.</p>
+            </article>
+            <div class="card-title">
+                <i class="fa-solid fa-plus icon"></i>
+                <h3>In what formats are your template available</h3>
+            </div>
+            <article class="content">
+                <p>Website templates are available in Photoshop and HTML formats. Fonts are included with the Photoshop file. In most templates, HTML is compatible with Adobe® Dreamweaver® and Microsoft® FrontPage®.</p>
+            </article>
+            <div class="card-title">
+                <i class="fa-solid fa-plus icon"></i>
+                <h3>What am I allowed to do with the templates?</h3>
+            </div>
+            <article class="content">
+                <p>You may build a website using the template in any way you like. You may not resell or redistribute templates (like we do); claim intellectual or exclusive ownership to any of our products, modified or unmodified. All products are property of content providing companies and individuals.</p>
+            </article>
+        </section>
+        <section class="skills">
+            <h1>Skills</h1>
+            <div class="skill">
+                <span>Branding</span>
+                <div class="progress-bar" style="--progress: 90%; --color: blue;">90%</div>
+            </div>
+            <div class="skill">
+                <span>Web Design</span>
+                <div class="progress-bar" style="--progress: 65%; --color: gold;">65%</div>
+            </div>
+            <div class="skill">
+                <span>Copywriting</span>
+                <div class="progress-bar" style="--progress: 100%; --color: red;">100%</div>
+            </div>
+            <div class="skill">
+                <span>Video Production</span>
+                <div class="progress-bar" style="--progress: 75%; --color: green;">75%</div>
+            </div>
+        </section>
+    </section>
+    
+
+    <script>
+    $(".card-title").click(function() {
+        var t = $(this);
+        var icon = t.find(".icon"); // Encuentra el icono dentro del elemento actual
+
+        // Si el acordeón actual está abierto
+        if (t.hasClass("open")) {
+            t.removeClass("open"); // Remueve la clase 'open'
+            icon.removeClass("fa-minus").addClass("fa-plus"); // Cambia el icono a '+'
+            t.next(".content").slideUp(); // Cierra el contenido
+        } else {
+            // Cierra cualquier otro acordeón abierto
+            $(".card-title.open").each(function() {
+                $(this).removeClass("open").find(".icon").removeClass("fa-minus").addClass("fa-plus");
+                $(this).next(".content").slideUp(); // Cierra el contenido del acordeón abierto
+            });
+
+            // Abre el acordeón actual
+            t.addClass("open"); // Agrega la clase 'open'
+            icon.removeClass("fa-plus").addClass("fa-minus"); // Cambia el icono a '-'
+            t.next(".content").slideDown(); // Abre el contenido
+        }
+    });
+    </script>
+</body>
+</html>
